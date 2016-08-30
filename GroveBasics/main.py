@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import atexit
+import dweepy
 import signal
 import sys
 import time
@@ -33,17 +34,24 @@ if __name__ == '__main__':
 
         luxes = light.value()
         luxes = int(luxes)    
-        display.setColor(luxes, luxes, luxes)
-        display.clear()
 
         absdeg = knob.abs_deg()
         print "Abs values: %4d" % int(abs) , " raw %4d" % int(absdeg), "deg = %5.2f" % absrad , " rad "
 
+        display.clear()
+        display.setColor(luxes, luxes, luxes)
+        display.setCursor(0,0)
+        display.write(str(message))
+
+        data = {}
+        data['alive'] = "1"
+        data['luxes'] =  luxes
+        data['absdeg'] =  absdeg
+        data['message'] = message
+        dweepy.dweet_for('TheIoTLearningInitiative', data)
+
         if button.value() is 1:
             display.setColor(255, 0, 0)
-            display.setCursor(0,0)
-            display.write(str(message))
             relay.on()
-            time.sleep(1)
+            time.sleep(.5)
             relay.off()
-
