@@ -2,6 +2,7 @@
 
 import atexit
 import ConfigParser
+import dweepy
 import signal
 import sys
 import time
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     while True:
 
         luxes = light.value()
-        luxes = int(luxes)    
+        luxes = int(luxes)
         display.setColor(luxes, luxes, luxes)
         display.clear()
 
@@ -76,5 +77,10 @@ if __name__ == '__main__':
             relay.on()
             time.sleep(1)
             relay.off()
+            datafreeboard = {}
+            datafreeboard['alive'] = "1"
+            datafreeboard['luxes'] =  luxes
+            datafreeboard['message'] = message
+            dweepy.dweet_for('ProjectName', datafreeboard)
 
     updater.idle()
