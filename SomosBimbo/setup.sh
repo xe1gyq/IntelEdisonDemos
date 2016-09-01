@@ -1,5 +1,5 @@
 echo
-echo "Welcome to Xe1Gyq Openstack Device Playground"
+echo "Welcome to Somos Bimbo Playground"
 echo
 
 sleep 4
@@ -12,18 +12,18 @@ python setup.py install
 cd ..
 rm -rf pywapi-0.3.8*
 
-git clone https://github.com/xe1gyq/openstack.git
-cd openstack/device
+git clone https://github.com/xe1gyq/IntelEdisonDemos.git
+cd IntelEdisonDemos/SomosBimbo
 
 pip install pip --upgrade
 sh requirements.opkg
 pip install -r requirements.pip
 
 echo
-echo "Now go to openstack/device directory to get started!"
+echo "Now go to IntelEdisonDemos/SomosBimbo directory to get started!"
 echo
 echo "Work on having your credentials ready!"
 echo "credentials.config"
 echo
-echo "Happy Openstack'ing!"
+echo "Happy SomosBimbo'ing!"
 echo
